@@ -16,7 +16,7 @@ print("Подключение к PX4...")
 
 #vehicle = connect('127.0.0.1:14550', wait_ready=True)
 # Замените '/dev/serial0' на ваш порт
-vehicle = connect('192.168.31.206:14550', baud=57600, wait_ready=True)
+vehicle = connect('/dev/serial0', baud=57600, wait_ready=True)
 print(f"Связь установлена! Текущий режим: {vehicle.mode.name}")
 
 # ==========================================
