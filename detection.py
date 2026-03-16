@@ -87,7 +87,7 @@ while cap.isOpened():
     # ==========================================
     if auto_track_mode:
         # Режим 1: АВТОНОМНОЕ СЛЕЖЕНИЕ
-        cv2.putText(frame, "MODE: AUTO TRACKING", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+        cv2.putText(frame, "MODE: AUTO TRACKING", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         
         if target_found:
             error_x = best_target_x - CENTER_X
@@ -103,20 +103,20 @@ while cap.isOpened():
             
             cv2.rectangle(frame, (best_box[0], best_box[1]), (best_box[2], best_box[3]), (0, 255, 0), 2)
             cv2.circle(frame, (best_target_x, best_target_y), 5, (0, 255, 0), -1)
-            cv2.putText(frame, f"YAW PWM: {yaw_pwm}", (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+            cv2.putText(frame, f"YAW PWM: {yaw_pwm}", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
             fps = 1.0 / (time.time() - start_time)
     
-            cv2.putText(frame, f"FPS: {round(fps, 1)}", (10, 30), 
+            cv2.putText(frame, f"FPS: {round(fps, 1)}", (10, 120), 
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
 
             
         else:
             vehicle.channels.overrides['4'] = 1500
-            cv2.putText(frame, "NO TARGET", (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 165, 255), 2)
+            cv2.putText(frame, "NO TARGET", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 165, 255), 2)
             
     else:
         # Режим 2: РУЧНОЕ УПРАВЛЕНИЕ (Пульт)
-        cv2.putText(frame, "MODE: MANUAL", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.putText(frame, "MODE: MANUAL", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         vehicle.channels.overrides = {}
 
         if target_found:
